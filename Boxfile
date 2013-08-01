@@ -19,11 +19,11 @@ web1:
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
   after_deploy:
-    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar update"
     - "rm -f app/storage/cache/*"
     - "php artisan cache:clear"
     - "rm -f app/storage/views/*"
   before_deploy:
+    - "php artisan migrate --package=cartalyst/sentry"
     - "php artisan migrate"
 cache1:
   type: redis
