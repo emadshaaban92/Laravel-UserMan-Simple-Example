@@ -10,8 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::any('/',       array('as' => 'index',       'uses' => 'HomeController@showWelcome'));
 
-Route::get('/', function()
+Route::get('logout',  array('as' => 'logout',      'uses' => 'App\Controllers\AuthController@getLogout'));
+Route::get('login',   array('as' => 'login',       'uses' => 'App\Controllers\AuthController@getLogin'));
+Route::post('login',  array('as' => 'login.post',  'uses' => 'App\Controllers\AuthController@postLogin'));
+
+Route::group(array('prefix' => 'member', 'before' => 'auth.sentry'), function()
 {
-	return View::make('hello');
+	Route::any('/',   array('as' => 'MemberHome',   'uses' =>  'HomeController@showWelcome'));
+	
 });
