@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>L4 Site</title>
+	<title>Emad UserMan</title>
 
 	@include('_partials.assets')
 </head>

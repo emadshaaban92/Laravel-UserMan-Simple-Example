@@ -25,6 +25,7 @@
 
 			<div class="form-actions">
 				{{ Form::submit('Login', array('class' => 'btn btn-inverse btn-login')) }}
+				or <a href="{{ URL::route('register') }}"> Register </a> if you don't have an account .
 			</div>
 
 		{{ Form::close() }}
